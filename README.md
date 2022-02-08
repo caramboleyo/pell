@@ -1,11 +1,4 @@
-#### [v2 working branch](https://github.com/jaredreich/pell/tree/v2) and [v2 project board](https://github.com/jaredreich/pell/projects/1)
-
----
-
-<img src="./images/logo.png" width="128" alt="Logo">
-
-[![npm](https://img.shields.io/npm/v/pell.svg)](https://www.npmjs.com/package/pell)
-[![cdnjs](https://img.shields.io/cdnjs/v/pell.svg)](https://cdnjs.com/libraries/pell)
+Fork of [pell](https://github.com/jaredreich/pell)
 
 > pell is the simplest and smallest WYSIWYG text editor for web, with no dependencies
 
@@ -13,26 +6,9 @@ Live demo: [https://jaredreich.com/pell](https://jaredreich.com/pell)
 
 [![Live demo](/demo.gif?raw=true "Demo")](https://jaredreich.com/pell)
 
-## Comparisons
-
-| library       | size (min+gzip) | size (min) | jquery | bootstrap | react | link |
-|---------------|-----------------|------------|--------|-----------|-------|------|
-| pell          | 1.38kB          | 3.54kB     |        |           |       | https://github.com/jaredreich/pell |
-| squire        | 16kB            | 49kB       |        |           |       | https://github.com/neilj/Squire |
-| medium-editor | 27kB            | 105kB      |        |           |       | https://github.com/yabwe/medium-editor |
-| quill         | 43kB            | 205kB      |        |           |       | https://github.com/quilljs/quill |
-| trix          | 47kB            | 204kB      |        |           |       | https://github.com/basecamp/trix |
-| ckeditor      | 163kB           | 551kB      |        |           |       | https://ckeditor.com |
-| trumbowyg     | 8kB             | 23kB       | x      |           |       | https://github.com/Alex-D/Trumbowyg |
-| summernote    | 26kB            | 93kB       | x      | x         |       | https://github.com/summernote/summernote |
-| draft         | 46kB            | 147kB      |        |           | x     | https://github.com/facebook/draft-js |
-| froala        | 52kB            | 186kB      | x      |           |       | https://github.com/froala/wysiwyg-editor |
-| tinymce       | 157kB           | 491kB      | x      |           |       | https://github.com/tinymce/tinymce |
-
 ## Features
 
 * Pure JavaScript, no dependencies, written in ES6
-* Easily customizable with the sass file (pell.scss) or overwrite the CSS
 
 Included actions:
 - Bold
@@ -76,12 +52,6 @@ Or create any custom action!
 * Opera 11.6+
 
 ## Installation
-
-#### npm:
-
-```bash
-npm install --save pell
-```
 
 #### HTML:
 
@@ -276,38 +246,6 @@ init({
 })
 ```
 
-#### Frameworks
-
-- [React](/examples/react.md)
-- [Vue](/examples/vue.md)
-
-## Custom Styles
-
-#### SCSS
-
-```scss
-$pell-content-height: 400px;
-// See all overwriteable variables in src/pell.scss
-
-// Then import pell.scss into styles:
-@import '../../node_modules/pell/src/pell';
-```
-
-#### CSS
-
-```css
-/* After pell styles are applied to DOM: */
-.pell-content {
-  height: 400px;
-}
-```
-
 ## License
 
 MIT
-
-## Credits
-
-BrowserStack for cross browser testing:
-
-<a href="https://www.browserstack.com" target="_blank" rel="noopener noreferrer"><img width="128" src="./images/browserstack.png" alt="BrowserStack logo"></a>
