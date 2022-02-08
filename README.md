@@ -1,6 +1,4 @@
-Fork of [pell](https://github.com/jaredreich/pell)
-
-> pell is the simplest and smallest WYSIWYG text editor for web, with no dependencies
+pellqor is the extracted core of the [pell wysiwyg editor](https://github.com/jaredreich/pell), giving you a headless, super simple wysiwyg editor.
 
 Live demo: [https://jaredreich.com/pell](https://jaredreich.com/pell)
 
@@ -8,7 +6,7 @@ Live demo: [https://jaredreich.com/pell](https://jaredreich.com/pell)
 
 ## Features
 
-* Pure JavaScript, no dependencies, written in ES6
+* Pure JavaScript, no dependencies, ES6 module
 
 Included actions:
 - Bold
