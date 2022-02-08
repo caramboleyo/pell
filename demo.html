@@ -1,58 +1,84 @@
 <!DOCTYPE html>
 <html>
-  <head>
 
-    <meta name="viewport" content="user-scalable=1.0,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="user-scalable=1.0,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0">
+	<title>pellqor</title>
+	<link rel="stylesheet" href="//direct.cdn.centralis.world/css/fonts/segoe-ui/20220101/index.css">
+	<style>
+		* { margin: 0; padding: 0; box-sizing: border-box; font-family: inherit; }
+		html { font-size: 10px; }
+		body { padding: 3rem; font-family: SegoeUI, sans-serif; font-size: 1.4rem; }
+		h1, h2, h3, p, ul, ol, table, figure { margin: 0 0 1rem 0; }
+		pre { font-family: monospace; }
+		button { margin: 0 0 1rem 0; background: transparent; border: 1px solid #000; padding: 0 .5rem; border-radius: .25rem; }
+		a { text-decoration: none; border-bottom: 2px solid; }
 
-    <title>pell</title>
+		.container { max-width: 80rem; margin: auto; }
 
-    <link rel="stylesheet" type="text/css" href="dist/pell.css">
+		.myEditor { border: 2px solid #000; padding: 1rem; border-radius: .5rem; }
+		.pell-content { outline: 0; }
+		.pell-button-selected { background: #000; color: #FFF; }
 
-    <style>
-      body {
-        margin: 0;
-        padding: 0;
-      }
+		#textOutput,
+		#htmlOutput { border: 2px solid #000; padding: 1rem; border-radius: .5rem; }
+	</style>
+</head>
 
-      .content {
-        box-sizing: border-box;
-        margin: 0 auto;
-        max-width: 600px;
-        padding: 20px;
-      }
+<body>
+	<div class="container">
+		<h1>pellqor</h1>
+		<p>Pellqor is the extracted core of the <a href="https://github.com/jaredreich/pell" target="_blank">pell wysiwyg editor</a>, giving you a headless, super simple wysiwyg editor.</p>
+		<br>
+		<div class="myEditor">
+			<button id="myBoldButton" onclick="editor.action.bold()">Bold</button>
+			<button id="myItalicButton" onclick="editor.action.italic()">Italic</button>
+			<button id="myUnderlineButton" onclick="editor.action.underline()">Underline</button>
+			<button id="myStrikeButton" onclick="editor.action.strikethrough()">Strikethrough</button>
+			<button onclick="editor.action.heading2()">Heading2</button>
+			<button onclick="editor.action.paragraph()">Paragraph</button>
+			<button onclick="editor.action.quote()">Quote</button>
+			<button onclick="editor.action.olist()">Ordered List</button>
+			<button onclick="editor.action.ulist()">Unordered List</button>
+			<button onclick="editor.action.code()">Code</button>
+			<button onclick="editor.action.line()">Horizontal Ruler</button>
+			<button onclick="editor.action.link()">Link</button>
+			<button onclick="editor.action.image()">Image</button>
+			<div id="editor"><h2>This is a test</h2><p>Change some <b>text</b> here.</p></div>
+		</div>
+		<br>
+		<div>
+			<h2>Text output:</h2>
+			<div id="textOutput"></div>
+		</div>
+		<br>
+		<div>
+			<h2>HTML output:</h2>
+			<pre id="htmlOutput"></pre>
+		</div>
+	</div>
+	<script type="module">
+		import pellqor from './pellqor.js';
+		window.editor = pellqor.init({
+			element: document.getElementById('editor'),
+			actions: {
+				test: {
+					result: (selection, cursor) => {
+						
+					}
+				}
+			},
+			onChange: function(html) {
+				document.getElementById('textOutput').innerHTML = html;
+				document.getElementById('htmlOutput').textContent = html;
+			}
+		});
+		editor.watchState(document.getElementById('myBoldButton'), 'bold');
+		editor.watchState(document.getElementById('myItalicButton'), 'italic');
+		editor.watchState(document.getElementById('myUnderlineButton'), 'underline');
+		editor.watchState(document.getElementById('myStrikeButton'), 'strikethrough');
+	</script>
+</body>
 
-      #html-output {
-        white-space: pre-wrap;
-      }
-    </style>
-
-  </head>
-  <body>
-
-    <div class="content">
-      <h1>pell</h1>
-      <div id="editor" class="pell"></div>
-      <div style="margin-top:20px;">
-        <h3>Text output:</h3>
-        <div id="text-output"></div>
-      </div>
-      <div style="margin-top:20px;">
-        <h3>HTML output:</h3>
-        <pre id="html-output"></pre>
-      </div>
-    </div>
-
-    <script src="dist/pell.js"></script>
-    <script>
-      var editor = window.pell.init({
-        element: document.getElementById('editor'),
-        defaultParagraphSeparator: 'p',
-        onChange: function (html) {
-          document.getElementById('text-output').innerHTML = html
-          document.getElementById('html-output').textContent = html
-        }
-      })
-    </script>
-
-  </body>
 </html>
