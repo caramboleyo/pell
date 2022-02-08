@@ -1,8 +1,6 @@
 pellqor is the extracted core of the [pell wysiwyg editor](https://github.com/jaredreich/pell), giving you a headless, super simple wysiwyg editor.
 
-Live demo: [https://jaredreich.com/pell](https://jaredreich.com/pell)
-
-[![Live demo](/demo.gif?raw=true "Demo")](https://jaredreich.com/pell)
+Live demo: https://caramboleyo.github.io/pellqor/
 
 ## Features
 
