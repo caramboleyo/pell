@@ -12,11 +12,17 @@
 		body { padding: 3rem; font-family: SegoeUI, sans-serif; font-size: 1.4rem; }
 		h1, h2, h3, p, ul, ol, table, figure { margin: 0 0 1rem 0; }
 		h1 { font-size: 200%; }
-		h2 { font-size: 150%; }
-		h3 { font-size: 100%; }
+		h2 { font-size: 180%; }
+		h3 { font-size: 160%; }
+		h4 { font-size: 140%; }
+		h5 { font-size: 120%; }
+		h6 { font-size: 100%; }
 		pre { font-family: monospace; }
 		button { margin: 0 0 1rem 0; background: transparent; border: .1rem solid #000; padding: 0 .5rem; border-radius: .25rem; }
 		a { text-decoration: none; border-bottom: .2rem solid; }
+		blockquote { padding: 0 0 0 1rem; }
+		table { border-spacing: 0; border-collapse: collapse; }
+		td, th { border: 1px solid #000; padding: 5px; }
 
 		.container { max-width: 1152px; margin: auto; }
 
@@ -39,16 +45,47 @@
 			<button id="myItalicButton" onclick="editor.action.italic()">Italic</button>
 			<button id="myUnderlineButton" onclick="editor.action.underline()">Underline</button>
 			<button id="myStrikeButton" onclick="editor.action.strikethrough()">Strikethrough</button>
+
+			<button onclick="editor.action.justifyLeft()">Justify left</button>
+			<button onclick="editor.action.justifyCenter()">Justify center</button>
+			<button onclick="editor.action.justifyRight()">Justify right</button>
+			<button onclick="editor.action.justifyFull()">Justify full</button>
+
+			<button onclick="editor.action.indent()">Indent</button>
+			<button onclick="editor.action.outdent()">Outdent</button>
+			<button onclick="editor.action.subscript()">Subscript</button>
+			<button onclick="editor.action.superscript()">Superscript</button>
+
 			<button onclick="editor.action.heading2()">Heading2</button>
 			<button onclick="editor.action.paragraph()">Paragraph</button>
 			<button onclick="editor.action.quote()">Quote</button>
-			<button onclick="editor.action.olist()">Ordered List</button>
-			<button onclick="editor.action.ulist()">Unordered List</button>
+			<button onclick="editor.action.orderedList()">Ordered List</button>
+			<button onclick="editor.action.unorderedList()">Unordered List</button>
+
 			<button onclick="editor.action.code()">Code</button>
-			<button onclick="editor.action.line()">Horizontal Ruler</button>
+			<button onclick="editor.action.horizontalRule()">Horizontal Rule</button>
 			<button onclick="editor.action.link()">Link</button>
+			<button onclick="editor.action.unlink()">Unlink</button>
 			<button onclick="editor.action.image()">Image</button>
-			<div id="editor"><h2>This is a test</h2><p>Change some <b>text</b> here.</p></div>
+
+			<button onclick="editor.action.undo()">Undo</button>
+			<button onclick="editor.action.redo()">Redo</button>
+			<button onclick="editor.action.removeFormat()">Remove Format</button>
+
+			<div id="editor">
+				<h2>This is a test</h2>
+				<p>Change some <b>text</b> here.</p>
+				<table>
+					<tr>
+						<td>Apple</td>
+						<td>Orange</td>
+					</tr>
+					<tr>
+						<td>Cherry</td>
+						<td>Banana</td>
+					</tr>
+				</table>
+			</div>
 		</div>
 		<br>
 		<div>

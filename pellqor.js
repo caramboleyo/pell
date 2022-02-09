@@ -20,11 +20,36 @@ const defaultActions = {
 		state: () => queryCommandState('strikeThrough'),
 		result: () => exec('strikeThrough')
 	},
+	justifyLeft: {
+		result: () => exec('justifyLeft')
+	},
+	justifyCenter: {
+		result: () => exec('justifyCenter')
+	},
+	justifyRight: {
+		result: () => exec('justifyRight')
+	},
+	justifyFull: {
+		result: () => exec('justifyFull')
+	},
+	indent: {
+		result: () => exec('indent')
+	},
+	outdent: {
+		result: () => exec('outdent')
+	},
+	subscript: {
+		result: () => exec('subscript')
+	},
+	superscript: {
+		result: () => exec('superscript')
+	},
 	heading1: {
 		state: () => queryCommandState('h1'),
 		result: () => exec(formatBlock, '<h1>')
 	},
 	heading2: {
+		state: () => queryCommandState('h2'),
 		result: () => exec(formatBlock, '<h2>')
 	},
 	heading3: {
@@ -45,16 +70,16 @@ const defaultActions = {
 	quote: {
 		result: () => exec(formatBlock, '<blockquote>')
 	},
-	olist: {
+	orderedList: {
 		result: () => exec('insertOrderedList')
 	},
-	ulist: {
+	unorderedList: {
 		result: () => exec('insertUnorderedList')
 	},
 	code: {
 		result: () => exec(formatBlock, '<pre>')
 	},
-	line: {
+	horizontalRule: {
 		result: () => exec('insertHorizontalRule')
 	},
 	link: {
@@ -63,11 +88,23 @@ const defaultActions = {
 			if (url) exec('createLink', url)
 		}
 	},
+	unlink: {
+		result: () => exec('unlink')
+	},
 	image: {
 		result: () => {
 			const url = window.prompt('Enter the image URL')
 			if (url) exec('insertImage', url)
 		}
+	},
+	undo: {
+		result: () => exec('undo')
+	},
+	redo: {
+		result: () => exec('redo')
+	},
+	removeFormat: {
+		result: () => exec('removeFormat')
 	}
 }
 
@@ -121,14 +158,17 @@ export function init(settings) {
 	settings.element.watchState = (element, action) => {
 		action = defaultActions[action];
 		if (action.state) {
-			const handler = () => element.classList[action.state() ? 'add' : 'remove'](classes.selected);
+			const handler = () => element.classList[action.state() ? 'add' : 'remove'](classes.selected) && console.log('>>>state', action.state());
 			content.addEventListener('keyup', handler);
 			content.addEventListener('mouseup', handler);
 			element.addEventListener('click', handler);
 		}
 	};
 
-	settings.onChange(content.innerHTML)
+	settings.onChange(content.innerHTML);
+	exec('enableInlineTableEditing');
+	exec('enableAbsolutePositionEditor');
+	exec('enableObjectResizing');
 	return settings.element;
 }
 
