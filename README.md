@@ -53,8 +53,6 @@ Or create any custom action!
 
 ## Installation
 
-#### HTML:
-
 ```html
 <html>
 	<head>
@@ -73,8 +71,6 @@ Or create any custom action!
 ```
 
 ## Usage
-
-#### API
 
 ```js
 // Initialize pell on an HTMLElement
@@ -120,7 +116,7 @@ editor.watchState(document.getElementById('myStrikeButton'), 'strikethrough');
 pellqor.exec('command', 'value')
 ```
 
-#### List of overwriteable action names
+### List of overwriteable action names
 - bold
 - italic
 - underline
@@ -135,18 +131,6 @@ pellqor.exec('command', 'value')
 - line
 - link
 - image
-
-## Examples
-
-### General
-
-```html
-<div id="editor" class="pell"></div>
-<div>
-	HTML output:
-	<div id="html-output" style="white-space:pre-wrap;"></div>
-</div>
-```
 
 ## License
 
