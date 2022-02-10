@@ -115,6 +115,9 @@ const defaultClasses = {
 };
 
 export function init(settings) {
+	settings = Object.assign({
+		onChange: ()=>{}
+	}, settings);
 	if (!settings.element) {
 		throw Error('pellqor setting missing: element');
 	}

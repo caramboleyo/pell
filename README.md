@@ -1,6 +1,18 @@
+## Pellqor
 pellqor is the extracted core of the [pell wysiwyg editor](https://github.com/jaredreich/pell), giving you a headless, super simple wysiwyg editor.
 
 Live demo: https://caramboleyo.github.io/pellqor/
+
+## Modifications to original [pell](https://github.com/jaredreich/pell)
+
+* New `watchState` function, to trigger selected class on a button when its action is active at cursor position
+* actions is an object now, properties are the action names
+* More actions were added
+* execCommands `enableInlineTableEditing`, `enableAbsolutePositionEditor` and `enableObjectResizing` are active by default, but only seem to work in Firefox
+
+## Notes
+
+Pell relies fully on the [execCommand](https://developer.mozilla.org/en-US/docs/Web/API/Document/execCommand) function, which is officially deprecated but still works in all major browsers. This means it is completly left to the browser on how to interprete one of this commands. For example the table edit functions work in Firefox - it has them since Netscape, but not in Chrome.
 
 ## Features
 
@@ -18,7 +30,7 @@ Included actions:
 - subscript
 - superscript
 - indent
-- uutdent
+- outdent
 - heading1
 - heading2
 - heading3
@@ -54,17 +66,23 @@ Or create any custom action!
 ## Installation
 
 ```html
+<!DOCTYPE html>
 <html>
 	<head>
 		<meta charset="UTF-8">
+		<style>
+			.pell-button-selected { font-weight: bold; }
+		</style>
 	</head>
 	<body>
+		<button id="boldButton" onclick="editor.action.bold()">Bold</button>
 		<div id="editor">This is a <b>sample</b> text.</div>
-		<script>
-			import pellqor from '//cdn.centralis.world/js/pellqor.js';
-			const.editor = pellqor.init({
+		<script type="module">
+			import pellqor from 'https://cdn.centralis.world/js/pellqor/20220209/pellqor.js';
+			const editor = pellqor.init({
 				element: document.getElementById('editor')
 			});
+			editor.watchState(document.getElementById('boldButton'), 'bold');
 		</script>
 	</body>
 </html>
@@ -78,7 +96,7 @@ const editor = pellqor.init({
 	// <HTMLElement>, required
 	element: document.getElementById('some-id'),
 
-	// <Function>, required
+	// <Function>, optional
 	// Use the output html, triggered by element's `oninput` event
 	onChange: html => console.log(html),
 
@@ -98,8 +116,9 @@ const editor = pellqor.init({
 		},
 	},
 
-	// Choose your custom class names
+	// Choose your custom class names, optional
 	classes: {
+		editor: 'pell-editor',
 		content: 'pell-content',
 		selected: 'pell-button-selected'
 	}
@@ -115,22 +134,6 @@ editor.watchState(document.getElementById('myStrikeButton'), 'strikethrough');
 // this is just `document.execCommand(command, false, value)`
 pellqor.exec('command', 'value')
 ```
-
-### List of overwriteable action names
-- bold
-- italic
-- underline
-- strikethrough
-- heading1
-- heading2
-- paragraph
-- quote
-- olist
-- ulist
-- code
-- line
-- link
-- image
 
 ## License
 
